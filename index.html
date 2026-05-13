@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+<title>REFMAR - Sucursal Roca</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f5f7;--white:#fff;--border:#e5e5ea;--blt:#f2f2f7;
+  --txt:#1d1d1f;--mut:#6e6e73;--acc:#0071e3;
+  --gbg:#eaf7ee;--grn:#1a7f3c;
+  --bbg:#e8f2ff;--blu:#0064c8;
+  --abg:#fff6e0;--amb:#946000;
+  --red:#c00;
+  --mono:'SF Mono','Menlo','Consolas',monospace;
+}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;min-height:100vh}
+.hdr{background:var(--white);border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.hdr-logo{font-size:19px;font-weight:700;letter-spacing:-.4px}
+.hdr-logo em{font-style:normal;font-weight:400;color:var(--mut)}
+.hdr-r{text-align:right}
+.hdr-date{font-size:14px;font-weight:600;color:var(--txt)}
+.hdr-note{font-size:12px;color:var(--mut);margin-top:2px}
+.sec{padding:24px 32px 28px}
+.sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sec-title{font-size:13px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+.sec-n{background:var(--blt);border:1px solid var(--border);color:var(--mut);border-radius:20px;padding:2px 10px;font-size:12px;font-weight:600}
+.card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden}
+.twrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead{background:#fafafa;border-bottom:1px solid var(--border)}
+th{padding:11px 14px;font-size:11px;font-weight:700;color:var(--mut);text-align:left;white-space:nowrap;letter-spacing:.04em}
+th.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--blt)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#f9f9fb}
+td{padding:13px 14px;vertical-align:middle}
+.tnoc{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--acc);white-space:nowrap}
+.tdt{font-size:12px;color:var(--mut);white-space:nowrap}
+.tcli{font-size:13px;font-weight:600;min-width:140px}
+.tstate{min-width:110px}
+.tdesc{font-size:12px;color:var(--mut);min-width:160px;line-height:1.4}
+.tnum{text-align:right;font-family:var(--mono);font-size:12px;white-space:nowrap}
+.tbold{font-weight:700;color:var(--txt)}
+.tpct{text-align:right;min-width:70px}
+.tnfact{font-family:var(--mono);font-size:11px;color:var(--mut);min-width:140px}
+.tcom{font-size:12px;color:var(--mut);font-style:italic;min-width:160px}
+.tbtn{white-space:nowrap;min-width:130px}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;white-space:nowrap}
+.bent{background:var(--gbg);color:var(--grn)}
+.bpro{background:var(--bbg);color:var(--blu)}
+.bpen{background:var(--abg);color:var(--amb)}
+.pz{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red)}
+.pl{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amb)}
+.pk{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--grn)}
+.vbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:9px;border:1px solid var(--border);background:var(--white);color:var(--txt);font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s;white-space:nowrap}
+.vbtn:hover{background:var(--acc);border-color:var(--acc);color:#fff}
+.empty-cell{text-align:center;padding:40px;color:var(--mut);font-size:13px}
+.divider{height:1px;background:var(--blt);margin:0 32px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .25s;pointer-events:none}
+.ov.on{opacity:1;pointer-events:all}
+.sh{background:var(--white);border-radius:24px 24px 0 0;width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,1,.23,1)}
+.sh.on{transform:translateY(0)}
+.sh-drag{width:40px;height:5px;background:#d1d1d6;border-radius:3px;margin:12px auto 0;flex-shrink:0}
+.sh-top{padding:22px 28px 16px;border-bottom:1px solid var(--blt);display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0}
+.sh-ttl{font-size:24px;font-weight:700;letter-spacing:-.5px}
+.sh-sub{font-size:14px;color:var(--mut);margin-top:5px}
+.sh-cls{width:34px;height:34px;border-radius:50%;background:#f0f0f5;border:none;font-size:20px;color:var(--mut);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:inherit}
+.sh-body{overflow-y:auto;padding:22px 28px 56px;-webkit-overflow-scrolling:touch}
+.sh-lbl{font-size:12px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin:24px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--blt)}
+.sh-lbl:first-child{margin-top:0}
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ecell{background:var(--bg);border-radius:14px;padding:16px 18px}
+.ecell.wide{grid-column:span 2}
+.ecell.hl{background:var(--bbg)}
+.ecell-l{font-size:12px;color:var(--mut);font-weight:500;margin-bottom:6px}
+.ecell-v{font-size:20px;font-weight:700;letter-spacing:-.4px;color:var(--txt)}
+.ecell.hl .ecell-v{color:var(--blu)}
+.sh-com{background:var(--abg);border-radius:12px;padding:14px 16px;margin-bottom:4px;font-size:14px;color:var(--amb);line-height:1.5}
+.sh-com-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;color:var(--amb);opacity:.7}
+.mcard{border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin-bottom:14px;background:var(--white)}
+.mcard-cod{display:inline-block;font-family:var(--mono);font-size:11px;background:#f0f0f5;color:var(--mut);padding:3px 10px;border-radius:6px;margin-bottom:10px}
+.mcard-name{font-size:16px;font-weight:700;line-height:1.35;margin-bottom:14px;color:var(--txt)}
+.mcard-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid var(--blt)}
+.mcard-lbl{font-size:14px;color:var(--mut)}
+.mcard-val{font-size:16px;font-weight:700;font-family:var(--mono);color:var(--txt)}
+.nomat{text-align:center;padding:36px;color:var(--mut);font-size:14px}
+@media(max-width:640px){
+  .hdr,.sec,.divider{padding-left:16px;padding-right:16px}
+  .sec{padding-left:16px;padding-right:16px}
+  .divider{margin:0 16px}
+  .sh-top,.sh-body{padding-left:18px;padding-right:18px}
+  .egrid{grid-template-columns:1fr}
+  .ecell.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+<div class='hdr'><div class='hdr-logo'>REFMAR <em>&mdash; Sucursal Roca</em></div><div class='hdr-r'><div class='hdr-date'>13/05/2026</div><div class='hdr-note'>Actualizaci&oacute;n autom&aacute;tica diaria 14:00 hs</div></div></div>
+<div class='sec'><div class='sec-hdr'><span class='sec-title'>Pendientes de rendici&oacute;n</span><span class='sec-n'>10</span></div><div class='card'><div class='twrap'><table><thead><tr><th>N&#176; OC</th><th>Fecha pedido</th><th>Cliente</th><th>Estado</th><th>Descripci&oacute;n breve</th><th class='r'>Costo USD</th><th class='r'>TC</th><th class='r'>Venta ARS</th><th class='r'>Fletes ARS</th><th class='r'>Total ARS</th><th class='r'>% Rendido</th><th>N&#176; Factura/s</th><th>Comentarios</th><th>Materiales</th></tr></thead><tbody><tr><td class="tnoc">10814</td><td class="tdt">15/01/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">7 kits de reparacion K43FT2</td><td class="tnum">USD 682.33</td><td class="tnum">$ 1.415</td><td class="tnum">$ 1.485.374</td><td class="tnum">$ 53.846</td><td class="tnum tbold">$ 1.539.220</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_10814')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10826</td><td class="tdt">26/01/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">20 bobinas jefferson 220v</td><td class="tnum">USD 1,186.77</td><td class="tnum">$ 1.415</td><td class="tnum">$ 2.583.508</td><td class="tnum">$ 27.692</td><td class="tnum tbold">$ 2.611.200</td><td class="tpct"><span class="pl">20%</span></td><td class="tnfact">A-0005-00005504</td><td class="tcom">6/5 facture 4un a Raul Martinez</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_10826')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10842</td><td class="tdt">29/01/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">1 mp55a, 1 kp15a</td><td class="tnum">USD 1,168.49</td><td class="tnum">$ 1.415</td><td class="tnum">$ 2.543.715</td><td class="tnum">$ 27.692</td><td class="tnum tbold">$ 2.571.407</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_10842')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10988</td><td class="tdt">14/04/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">10 un bobina jefferson mh18c40611</td><td class="tnum">USD 625.52</td><td class="tnum">$ 1.415</td><td class="tnum">$ 1.361.705</td><td class="tnum">$ 58.462</td><td class="tnum tbold">$ 1.420.166</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_10988')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10989</td><td class="tdt">13/04/2026</td><td class="tcli">ALIPPI MARIO</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">4 un kit K0544, 4 un K054M2CS, 6 un K054C/D reparacion</td><td class="tnum">USD 468.91</td><td class="tnum">$ 1.415</td><td class="tnum">$ 1.020.782</td><td class="tnum">$ 58.462</td><td class="tnum tbold">$ 1.079.243</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_10989')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11010</td><td class="tdt">23/04/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">3 un juego de sello zm</td><td class="tnum">USD 434.10</td><td class="tnum">$ 1.415</td><td class="tnum">$ 945.002</td><td class="tnum">$ 30.769</td><td class="tnum tbold">$ 975.772</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_11010')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11012</td><td class="tdt">23/04/2026</td><td class="tcli">RAICES PATAGONICAS SRL</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">1 valv. pasaje 90° 1/2, 1 valv. pasaje 90° 2, 1 valv. gatillo 1/2</td><td class="tnum">USD 278.88</td><td class="tnum">$ 1.415</td><td class="tnum">$ 607.100</td><td class="tnum">$ 67.692</td><td class="tnum tbold">$ 674.793</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_11012')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11022</td><td class="tdt">29/04/2026</td><td class="tcli">HACIENDA MARTINEZ S.R.L.</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">5 un bobina valvula solen. Danfoss 220V</td><td class="tnum">USD 225.02</td><td class="tnum">$ 1.415</td><td class="tnum">$ 489.846</td><td class="tnum">$ 61.100</td><td class="tnum tbold">$ 550.946</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_11022')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11023</td><td class="tdt">29/04/2026</td><td class="tcli">HACIENDA MARTINEZ S.R.L.</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">5 un bobina jefferson mh18c40611</td><td class="tnum">USD 306.13</td><td class="tnum">$ 1.415</td><td class="tnum">$ 666.417</td><td class="tnum">$ 66.815</td><td class="tnum tbold">$ 733.233</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_11023')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11024</td><td class="tdt">29/04/2026</td><td class="tcli">REFMAR</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tdesc">6 un ventilador segun ppto</td><td class="tnum">USD 72.51</td><td class="tnum">$ 1.415</td><td class="tnum">$ 157.846</td><td class="tnum">$ 61.100</td><td class="tnum tbold">$ 218.946</td><td class="tpct"><span class="pz">0%</span></td><td class="tnfact">Pendiente</td><td class="tcom">&#8212;</td><td class="tbtn"><button class="vbtn" onclick="abrir('oc_11024')">Ver materiales</button></td></tr>
+</tbody></table></div></div></div>
+<div class='divider'></div>
+<div class='sec'><div class='sec-hdr'><span class='sec-title'>Rendido &mdash; &uacute;ltimos 30 d&iacute;as</span><span class='sec-n'>4</span></div><div class='card'><div class='twrap'><table><thead><tr><th>N&#176; OC</th><th>Fecha rendici&oacute;n</th><th>Cliente facturado</th><th>Estado</th><th class='r'>Costo USD</th><th class='r'>TC</th><th class='r'>Venta ARS</th><th class='r'>Fletes ARS</th><th class='r'>Total rendido</th><th class='r'>% Rendido</th><th>Comprobante</th><th>Materiales</th></tr></thead><tbody><tr><td class="tnoc">10993</td><td class="tdt">08/05/2026</td><td class="tcli">RAUL MARTINEZ S.R.L.</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tnum">USD 942.03</td><td class="tnum">$ 1.420</td><td class="tnum">$ 2.057.971</td><td class="tnum">$ 0</td><td class="tnum tbold">$ 2.057.971</td><td class="tpct"><span class="pk">100%</span></td><td class="tnfact">Obra</td><td class="tbtn"><button class="vbtn" onclick="abrir('ven_Obra')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10826</td><td class="tdt">06/05/2026</td><td class="tcli">MARISEL A MARTINEZ SRL</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tnum">USD 237.35</td><td class="tnum">$ 1.415</td><td class="tnum">$ 516.702</td><td class="tnum">$ 27.692</td><td class="tnum tbold">$ 544.394</td><td class="tpct"><span class="pl">20%</span></td><td class="tnfact">A-0005-00005504</td><td class="tbtn"><button class="vbtn" onclick="abrir('ven_A-0005-00005504')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">10806</td><td class="tdt">06/05/2026</td><td class="tcli">FRANCO CASTRO</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tnum">USD 523.20</td><td class="tnum">$ 1.415</td><td class="tnum">$ 1.138.966</td><td class="tnum">$ 27.692</td><td class="tnum tbold">$ 1.166.658</td><td class="tpct"><span class="pk">100%</span></td><td class="tnfact">Sin factura</td><td class="tbtn"><button class="vbtn" onclick="abrir('ven_Sin factura')">Ver materiales</button></td></tr>
+<tr><td class="tnoc">11009</td><td class="tdt">04/05/2026</td><td class="tcli">LAGUNA PATAGONICA SAS</td><td class="tstate"><span class="badge bent">Entregado</span></td><td class="tnum">USD 289.40</td><td class="tnum">$ 1.425</td><td class="tnum">$ 634.454</td><td class="tnum">$ 56.648</td><td class="tnum tbold">$ 691.102</td><td class="tpct"><span class="pk">100%</span></td><td class="tnfact">A-0005-00005498</td><td class="tbtn"><button class="vbtn" onclick="abrir('ven_A-0005-00005498')">Ver materiales</button></td></tr>
+</tbody></table></div></div></div>
+<div style='height:60px'></div>
+<div class='ov' id='ov' onclick='cerrar(event)'><div class='sh' id='sh'><div class='sh-drag'></div><div class='sh-top'><div><div class='sh-ttl' id='sh-ttl'></div><div class='sh-sub' id='sh-sub'></div></div><button class='sh-cls' onclick='cerrarSh()'>&#215;</button></div><div class='sh-body' id='sh-body'></div></div></div>
+<script>
+var D={"oc_10814": {"titulo": "OC 10814", "subtitulo": "REFMAR · 7 kits de reparacion K43FT2", "econ": [{"l": "Costo USD", "v": "USD 682.33"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.485.374"}, {"l": "Fletes ARS", "v": "$ 53.846"}, {"l": "Total ARS", "v": "$ 1.539.220", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "7", "cod": "2010", "desc": "KIT DE REPARAC K43FT2 PARA 1343 AT4 Y AT5", "pu": "USD 97.48", "tot": "USD 682.33"}], "comentarios": ""}, "oc_10826": {"titulo": "OC 10826", "subtitulo": "REFMAR · 20 bobinas jefferson 220v", "econ": [{"l": "Costo USD", "v": "USD 1,186.77"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.583.508"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 2.611.200", "hl": true}, {"l": "% Rendido", "v": "20%"}, {"l": "N° Factura/s", "v": "A-0005-00005504", "w": true}], "items": [{"cant": "20", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 1,186.77"}], "comentarios": "6/5 facture 4un a Raul Martinez"}, "oc_10842": {"titulo": "OC 10842", "subtitulo": "REFMAR · 1 mp55a, 1 kp15a", "econ": [{"l": "Costo USD", "v": "USD 1,168.49"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.543.715"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 2.571.407", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "1", "cod": "3058", "desc": "PRESOSTATO DIFERENCIAL MP55A", "pu": "USD 504.73", "tot": "USD 504.73"}, {"cant": "1", "cod": "3027", "desc": "PRESOSTATO, KP15A - 060-129466", "pu": "USD 663.76", "tot": "USD 663.76"}], "comentarios": ""}, "oc_10988": {"titulo": "OC 10988", "subtitulo": "REFMAR · 10 un bobina jefferson mh18c40611", "econ": [{"l": "Costo USD", "v": "USD 625.52"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.361.705"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.420.166", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "10", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 62.55", "tot": "USD 625.52"}], "comentarios": ""}, "oc_10989": {"titulo": "OC 10989", "subtitulo": "ALIPPI MARIO · 4 un kit K0544, 4 un K054M2CS, 6 un K054C/D reparacion", "econ": [{"l": "Costo USD", "v": "USD 468.91"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.020.782"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.079.243", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "4", "cod": "10083", "desc": "KIT DE REPARAC K0544 PARA 2054 2.1/2\" TAPA SIMPLE Y MULTIPLE SIN PILOTOS NI ACC", "pu": "USD 43.18", "tot": "USD 172.73"}, {"cant": "4", "cod": "2018", "desc": "K054M2CS KIT DE REPARACION", "pu": "USD 60.49", "tot": "USD 241.95"}, {"cant": "6", "cod": "387627424", "desc": "K054C/D KIT DE REPARACION", "pu": "USD 9.04", "tot": "USD 54.23"}], "comentarios": ""}, "oc_11010": {"titulo": "OC 11010", "subtitulo": "REFMAR · 3 un juego de sello zm", "econ": [{"l": "Costo USD", "v": "USD 434.10"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 945.002"}, {"l": "Fletes ARS", "v": "$ 30.769"}, {"l": "Total ARS", "v": "$ 975.772", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "3", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 434.10"}], "comentarios": ""}, "oc_11012": {"titulo": "OC 11012", "subtitulo": "RAICES PATAGONICAS SRL · 1 valv. pasaje 90° 1/2, 1 valv. pasaje 90° 2, 1 valv. gatillo 1/2", "econ": [{"l": "Costo USD", "v": "USD 278.88"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 607.100"}, {"l": "Fletes ARS", "v": "$ 67.692"}, {"l": "Total ARS", "v": "$ 674.793", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "1", "cod": "4002", "desc": "VALVULA DE PASAJE EN ANGULO 90º 1/2\"", "pu": "USD 70.40", "tot": "USD 70.40"}, {"cant": "1", "cod": "4007", "desc": "VALVULA DE PASAJE EN ANGULO 90º 2\"", "pu": "USD 141.60", "tot": "USD 141.60"}, {"cant": "1", "cod": "25047", "desc": "VALVULA GATILLO 1/2\"", "pu": "USD 66.88", "tot": "USD 66.88"}], "comentarios": ""}, "oc_11022": {"titulo": "OC 11022", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina valvula solen. Danfoss 220V", "econ": [{"l": "Costo USD", "v": "USD 225.02"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 489.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 550.946", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "5", "cod": "22147", "desc": "BOBINA DE VALVULA SOLENOIDE DANFOSS 220 V - 50 HZ", "pu": "USD 45.00", "tot": "USD 225.02"}], "comentarios": ""}, "oc_11023": {"titulo": "OC 11023", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina jefferson mh18c40611", "econ": [{"l": "Costo USD", "v": "USD 306.13"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 666.417"}, {"l": "Fletes ARS", "v": "$ 66.815"}, {"l": "Total ARS", "v": "$ 733.233", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "5", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 61.23", "tot": "USD 306.13"}], "comentarios": ""}, "oc_11024": {"titulo": "OC 11024", "subtitulo": "REFMAR · 6 un ventilador segun ppto", "econ": [{"l": "Costo USD", "v": "USD 72.51"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 157.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 218.946", "hl": true}, {"l": "% Rendido", "v": "0%"}, {"l": "N° Factura/s", "v": "Pendiente", "w": true}], "items": [{"cant": "6", "cod": "23865", "desc": "VENTILADOR SEGUN PPTO", "pu": "USD 12.08", "tot": "USD 72.51"}], "comentarios": ""}, "ven_Obra": {"titulo": "Factura Obra", "subtitulo": "RAUL MARTINEZ S.R.L. · 08/05/2026", "econ": [{"l": "Costo USD", "v": "USD 942.03"}, {"l": "TC", "v": "$ 1.420"}, {"l": "Venta ARS", "v": "$ 2.057.971"}, {"l": "Fletes ARS", "v": "$ 0"}, {"l": "Total ARS", "v": "$ 2.057.971", "hl": true}, {"l": "% Rendido", "v": "100%"}, {"l": "N° Factura/s", "v": "Obra", "w": true}], "items": [{"cant": "1", "cod": "17923", "desc": "LONA SEGUN PRESUPUESTO", "pu": "USD 942.03", "tot": "USD 942.03"}], "comentarios": ""}, "ven_A-0005-00005504": {"titulo": "Factura A-0005-00005504", "subtitulo": "MARISEL A MARTINEZ SRL · 06/05/2026", "econ": [{"l": "Costo USD", "v": "USD 237.35"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 516.702"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 544.394", "hl": true}, {"l": "% Rendido", "v": "20%"}, {"l": "N° Factura/s", "v": "A-0005-00005504", "w": true}], "items": [{"cant": "4", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 237.35"}], "comentarios": "6/5 facture 4un a Raul Martinez"}, "ven_Sin factura": {"titulo": "Factura Sin factura", "subtitulo": "FRANCO CASTRO · 06/05/2026", "econ": [{"l": "Costo USD", "v": "USD 523.20"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.138.966"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 1.166.658", "hl": true}, {"l": "% Rendido", "v": "100%"}, {"l": "N° Factura/s", "v": "Sin factura", "w": true}], "items": [{"cant": "4", "cod": "4000", "desc": "ROBINETE DE 5MM (CON JUEGO DE UNIONES)", "pu": "USD 73.60", "tot": "USD 294.40"}, {"cant": "1", "cod": "4047", "desc": "VALVULA DE EXPANSION EN ANGULO 3/4\"", "pu": "USD 84.80", "tot": "USD 84.80"}, {"cant": "2", "cod": "4003", "desc": "VALVULA DE PASAJE EN ANGULO 90º 3/4\"", "pu": "USD 72.00", "tot": "USD 144.00"}], "comentarios": ""}, "ven_A-0005-00005498": {"titulo": "Factura A-0005-00005498", "subtitulo": "LAGUNA PATAGONICA SAS · 04/05/2026", "econ": [{"l": "Costo USD", "v": "USD 289.40"}, {"l": "TC", "v": "$ 1.425"}, {"l": "Venta ARS", "v": "$ 634.454"}, {"l": "Fletes ARS", "v": "$ 56.648"}, {"l": "Total ARS", "v": "$ 691.102", "hl": true}, {"l": "% Rendido", "v": "100%"}, {"l": "N° Factura/s", "v": "A-0005-00005498", "w": true}], "items": [{"cant": "2", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 289.40"}], "comentarios": ""}};
+function abrir(id){
+  var d=D[id]; if(!d) return;
+  document.getElementById('sh-ttl').textContent=d.titulo;
+  document.getElementById('sh-sub').textContent=d.subtitulo||'';
+  var h='';
+  if(d.comentarios){
+    h+='<div class="sh-com"><div class="sh-com-lbl">Comentario</div>'+d.comentarios+'</div>';
+  }
+  h+='<div class="sh-lbl">Resumen económico</div><div class="egrid">';
+  d.econ.forEach(function(e){
+    var c='ecell'+(e.hl?' hl':'')+(e.w?' wide':'');
+    h+='<div class="'+c+'"><div class="ecell-l">'+e.l+'</div><div class="ecell-v">'+e.v+'</div></div>';
+  });
+  h+='</div>';
+  h+='<div class="sh-lbl">Costo de materiales</div>';
+  var items=d.items||[];
+  if(!items.length){h+='<div class="nomat">Sin materiales registrados</div>';}
+  else{items.forEach(function(m){
+    h+='<div class="mcard">';
+    if(m.cod&&m.cod!=='')h+='<div class="mcard-cod">Código QS – '+m.cod+'</div>';
+    h+='<div class="mcard-name">'+m.desc+'</div>';
+    h+='<div class="mcard-row"><span class="mcard-lbl">Cantidad</span><span class="mcard-val">'+m.cant+'</span></div>';
+    h+='<div class="mcard-row"><span class="mcard-lbl">Costo unitario USD</span><span class="mcard-val">'+m.pu+'</span></div>';
+    h+='<div class="mcard-row"><span class="mcard-lbl">Costo total USD</span><span class="mcard-val">'+m.tot+'</span></div>';
+    h+='</div>';
+  });}
+  document.getElementById('sh-body').innerHTML=h;
+  document.getElementById('ov').classList.add('on');
+  document.getElementById('sh').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function cerrarSh(){
+  document.getElementById('ov').classList.remove('on');
+  document.getElementById('sh').classList.remove('on');
+  document.body.style.overflow='';
+}
+function cerrar(e){if(e.target===document.getElementById('ov'))cerrarSh();}
+var sy=0,sh=document.getElementById('sh');
+sh.addEventListener('touchstart',function(e){sy=e.touches[0].clientY;},{passive:true});
+sh.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-sy>70)cerrarSh();},{passive:true});
+</script>
+</body>
+</html>
