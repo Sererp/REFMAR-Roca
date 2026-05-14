@@ -153,13 +153,13 @@ function abrir(id){
   if(d.historial&&d.historial.length>0){
     h+='<div class="sh-lbl">Historial de facturación</div>';
     h+='<div class="card"><table class="htable">';
-    h+='<thead><tr><th>Fecha</th><th>Comprobante</th><th>Cliente</th><th class="r">Costo USD</th><th class="r">% OC</th></tr></thead><tbody>';
+    h+='<thead><tr><th>Fecha</th><th>Comprobante</th><th>Cliente</th><th class="r">Total ARS</th><th class="r">% OC</th></tr></thead><tbody>';
     d.historial.forEach(function(h2){
       h+='<tr>';
       h+='<td class="dt">'+h2.fecha+'</td>';
       h+='<td class="tit">'+h2.titulo+'</td>';
       h+='<td class="cli">'+h2.cli+'</td>';
-      h+='<td class="r">'+h2.costo+'</td>';
+      h+='<td class="r">'+h2.total+'</td>';
       h+='<td class="r">'+h2.pct+'</td>';
       h+='</tr>';
     });
