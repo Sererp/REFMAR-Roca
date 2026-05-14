@@ -11,19 +11,16 @@
 :root{
   --bg:#f5f5f7;--white:#fff;--border:#e5e5ea;--blt:#f2f2f7;
   --txt:#1d1d1f;--mut:#6e6e73;--acc:#0071e3;
-  --gbg:#eaf7ee;--grn:#1a7f3c;
-  --bbg:#e8f2ff;--blu:#0064c8;
-  --abg:#fff6e0;--amb:#946000;
-  --pbg:#f0eeff;--pur:#5856d6;
-  --red:#c00;
-  --mono:'SF Mono','Menlo','Consolas',monospace;
+  --gbg:#eaf7ee;--grn:#1a7f3c;--bbg:#e8f2ff;--blu:#0064c8;
+  --abg:#fff6e0;--amb:#946000;--pbg:#f0eeff;--pur:#5856d6;
+  --red:#c00;--mono:'SF Mono','Menlo','Consolas',monospace;
 }
 body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;min-height:100vh}
 .hdr{background:var(--white);border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
 .hdr-logo{font-size:19px;font-weight:700;letter-spacing:-.4px}
 .hdr-logo em{font-style:normal;font-weight:400;color:var(--mut)}
 .hdr-r{text-align:right}
-.hdr-date{font-size:14px;font-weight:600;color:var(--txt)}
+.hdr-date{font-size:14px;font-weight:600}
 .hdr-note{font-size:12px;color:var(--mut);margin-top:2px}
 .sec{padding:24px 32px 28px}
 .sec-hdr{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -55,10 +52,8 @@ td{padding:13px 14px;vertical-align:middle}
 .bpro{background:var(--bbg);color:var(--blu)}
 .bpen{background:var(--abg);color:var(--amb)}
 .tbadge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
-.tf{background:var(--bbg);color:var(--blu)}
-.te{background:var(--gbg);color:var(--grn)}
-.to{background:var(--abg);color:var(--amb)}
-.ts{background:var(--blt);color:var(--mut)}
+.tf{background:var(--bbg);color:var(--blu)}.te{background:var(--gbg);color:var(--grn)}
+.to{background:var(--abg);color:var(--amb)}.ts{background:var(--blt);color:var(--mut)}
 .tp{background:var(--pbg);color:var(--pur)}
 .pz{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red)}
 .pl{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--amb)}
@@ -81,13 +76,12 @@ td{padding:13px 14px;vertical-align:middle}
 .sh-lbl:first-child{margin-top:0}
 .egrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ecell{background:var(--bg);border-radius:14px;padding:16px 18px}
-.ecell.wide{grid-column:span 2}
-.ecell.hl{background:var(--bbg)}
+.ecell.wide{grid-column:span 2}.ecell.hl{background:var(--bbg)}
 .ecell-l{font-size:12px;color:var(--mut);font-weight:500;margin-bottom:6px}
 .ecell-v{font-size:20px;font-weight:700;letter-spacing:-.4px;color:var(--txt)}
 .ecell.hl .ecell-v{color:var(--blu)}
 .sh-com{background:var(--abg);border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:14px;color:var(--amb);line-height:1.5}
-.sh-com-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;color:var(--amb);opacity:.7}
+.sh-com-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;opacity:.7}
 .htable{width:100%;border-collapse:collapse;font-size:13px}
 .htable th{padding:8px 12px;font-size:11px;font-weight:700;color:var(--mut);text-align:left;background:var(--bg);border-bottom:1px solid var(--border);letter-spacing:.03em}
 .htable th.r{text-align:right}
@@ -96,20 +90,19 @@ td{padding:13px 14px;vertical-align:middle}
 .htable td.r{text-align:right;font-family:var(--mono);font-size:12px;font-weight:600}
 .htable td.dt{font-size:12px;color:var(--mut);white-space:nowrap}
 .htable td.cli{font-size:13px;font-weight:500}
-.htable td.tit{font-size:13px;font-weight:600;color:var(--txt)}
+.htable td.tit{font-size:13px;font-weight:600}
 .mcard{border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin-bottom:14px}
 .mcard-cod{display:inline-block;font-family:var(--mono);font-size:11px;background:#f0f0f5;color:var(--mut);padding:3px 10px;border-radius:6px;margin-bottom:10px}
-.mcard-name{font-size:16px;font-weight:700;line-height:1.35;margin-bottom:14px;color:var(--txt)}
+.mcard-name{font-size:16px;font-weight:700;line-height:1.35;margin-bottom:14px}
 .mcard-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-top:1px solid var(--blt)}
 .mcard-lbl{font-size:14px;color:var(--mut)}
-.mcard-val{font-size:16px;font-weight:700;font-family:var(--mono);color:var(--txt)}
+.mcard-val{font-size:16px;font-weight:700;font-family:var(--mono)}
 .nomat{text-align:center;padding:32px;color:var(--mut);font-size:14px}
 @media(max-width:640px){
   .hdr,.sec{padding-left:16px;padding-right:16px}
   .divider{margin:0 16px}
   .sh-top,.sh-body{padding-left:18px;padding-right:18px}
-  .egrid{grid-template-columns:1fr}
-  .ecell.wide{grid-column:span 1}
+  .egrid{grid-template-columns:1fr}.ecell.wide{grid-column:span 1}
 }
 </style>
 </head>
@@ -135,38 +128,22 @@ td{padding:13px 14px;vertical-align:middle}
 <div style='height:60px'></div>
 <div class='ov' id='ov' onclick='cerrar(event)'><div class='sh' id='sh'><div class='sh-drag'></div><div class='sh-top'><div><div class='sh-ttl' id='sh-ttl'></div><div class='sh-sub' id='sh-sub'></div></div><button class='sh-cls' onclick='cerrarSh()'>&#215;</button></div><div class='sh-body' id='sh-body'></div></div></div>
 <script>
-var D={"oc_10814": {"titulo": "OC 10814", "subtitulo": "REFMAR · 7 kits de reparacion K43FT2", "noc": "10814", "econ": [{"l": "Costo USD", "v": "USD 682.33"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.485.374"}, {"l": "Fletes ARS", "v": "$ 53.846"}, {"l": "Total ARS", "v": "$ 1.539.220", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "7", "cod": "2010", "desc": "KIT DE REPARAC K43FT2 PARA 1343 AT4 Y AT5", "pu": "USD 97.48", "tot": "USD 682.33"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10826": {"titulo": "OC 10826", "subtitulo": "REFMAR · 20 bobinas jefferson 220v", "noc": "10826", "econ": [{"l": "Costo USD", "v": "USD 1,186.77"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.583.508"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 2.611.200", "hl": true}, {"l": "% Rendido", "v": "20%"}], "items": [{"cant": "20", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 1,186.77"}], "historial": [{"fecha": "06/05/2026", "fac": "A-0005-00005504", "titulo": "A-0005-00005504", "cli": "MARISEL A MARTINEZ SRL", "tipo": "Facturado", "costo": "USD 237.35", "total": "$ 544.394", "pct": "20%"}], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10842": {"titulo": "OC 10842", "subtitulo": "REFMAR · 1 mp55a, 1 kp15a", "noc": "10842", "econ": [{"l": "Costo USD", "v": "USD 1,168.49"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.543.715"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 2.571.407", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "1", "cod": "3058", "desc": "PRESOSTATO DIFERENCIAL MP55A", "pu": "USD 504.73", "tot": "USD 504.73"}, {"cant": "1", "cod": "3027", "desc": "PRESOSTATO, KP15A - 060-129466", "pu": "USD 663.76", "tot": "USD 663.76"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10988": {"titulo": "OC 10988", "subtitulo": "REFMAR · 10 un bobina jefferson mh18c40611", "noc": "10988", "econ": [{"l": "Costo USD", "v": "USD 625.52"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.361.705"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.420.166", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "10", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 62.55", "tot": "USD 625.52"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10989": {"titulo": "OC 10989", "subtitulo": "ALIPPI MARIO · 4 un kit K0544, 4 un K054M2CS, 6 un K054C/D reparacion", "noc": "10989", "econ": [{"l": "Costo USD", "v": "USD 468.91"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.020.782"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.079.243", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "4", "cod": "10083", "desc": "KIT DE REPARAC K0544 PARA 2054 2.1/2\" TAPA SIMPLE Y MULTIPLE SIN PILOTOS NI ACC", "pu": "USD 43.18", "tot": "USD 172.73"}, {"cant": "4", "cod": "2018", "desc": "K054M2CS KIT DE REPARACION", "pu": "USD 60.49", "tot": "USD 241.95"}, {"cant": "6", "cod": "387627424", "desc": "K054C/D KIT DE REPARACION", "pu": "USD 9.04", "tot": "USD 54.23"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11010": {"titulo": "OC 11010", "subtitulo": "REFMAR · 3 un juego de sello zm", "noc": "11010", "econ": [{"l": "Costo USD", "v": "USD 434.10"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 945.002"}, {"l": "Fletes ARS", "v": "$ 30.769"}, {"l": "Total ARS", "v": "$ 975.772", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "3", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 434.10"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11012": {"titulo": "OC 11012", "subtitulo": "RAICES PATAGONICAS SRL · 1 valv. pasaje 90° 1/2, 1 valv. pasaje 90° 2, 1 valv. gatillo 1/2", "noc": "11012", "econ": [{"l": "Costo USD", "v": "USD 278.88"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 607.100"}, {"l": "Fletes ARS", "v": "$ 67.692"}, {"l": "Total ARS", "v": "$ 674.793", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "1", "cod": "4002", "desc": "VALVULA DE PASAJE EN ANGULO 90º 1/2\"", "pu": "USD 70.40", "tot": "USD 70.40"}, {"cant": "1", "cod": "4007", "desc": "VALVULA DE PASAJE EN ANGULO 90º 2\"", "pu": "USD 141.60", "tot": "USD 141.60"}, {"cant": "1", "cod": "25047", "desc": "VALVULA GATILLO 1/2\"", "pu": "USD 66.88", "tot": "USD 66.88"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11022": {"titulo": "OC 11022", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina valvula solen. Danfoss 220V", "noc": "11022", "econ": [{"l": "Costo USD", "v": "USD 225.02"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 489.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 550.946", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "5", "cod": "22147", "desc": "BOBINA DE VALVULA SOLENOIDE DANFOSS 220 V - 50 HZ", "pu": "USD 45.00", "tot": "USD 225.02"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11023": {"titulo": "OC 11023", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina jefferson mh18c40611", "noc": "11023", "econ": [{"l": "Costo USD", "v": "USD 306.13"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 666.417"}, {"l": "Fletes ARS", "v": "$ 66.815"}, {"l": "Total ARS", "v": "$ 733.233", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "5", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 61.23", "tot": "USD 306.13"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11024": {"titulo": "OC 11024", "subtitulo": "REFMAR · 6 un ventilador segun ppto", "noc": "11024", "econ": [{"l": "Costo USD", "v": "USD 72.51"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 157.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 218.946", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "6", "cod": "23865", "desc": "VENTILADOR SEGUN PPTO", "pu": "USD 12.08", "tot": "USD 72.51"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "ven_10993_Obra": {"titulo": "Corresponde a material de obra", "subtitulo": "RAUL MARTINEZ S.R.L. · OC 10993", "noc": "10993", "econ": [{"l": "Costo USD", "v": "USD 942.03"}, {"l": "TC", "v": "$ 1.420"}, {"l": "Venta ARS", "v": "$ 2.057.971"}, {"l": "Fletes ARS", "v": "$ 0"}, {"l": "Total ARS", "v": "$ 2.057.971", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "1", "cod": "17923", "desc": "LONA SEGUN PRESUPUESTO", "pu": "USD 942.03", "tot": "USD 942.03"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_A-0005-00005504": {"titulo": "A-0005-00005504", "subtitulo": "MARISEL A MARTINEZ SRL · OC 10826", "noc": "10826", "econ": [{"l": "Costo USD", "v": "USD 237.35"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 516.702"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 544.394", "hl": true}, {"l": "Esta rendición representa", "v": "20% de la OC"}], "items": [{"cant": "4", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 237.35"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_10806_Efectivo": {"titulo": "Cobro en efectivo", "subtitulo": "FRANCO CASTRO · OC 10806", "noc": "10806", "econ": [{"l": "Costo USD", "v": "USD 523.20"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.138.966"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 1.166.658", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "4", "cod": "4000", "desc": "ROBINETE DE 5MM (CON JUEGO DE UNIONES)", "pu": "USD 73.60", "tot": "USD 294.40"}, {"cant": "1", "cod": "4047", "desc": "VALVULA DE EXPANSION EN ANGULO 3/4\"", "pu": "USD 84.80", "tot": "USD 84.80"}, {"cant": "2", "cod": "4003", "desc": "VALVULA DE PASAJE EN ANGULO 90º 3/4\"", "pu": "USD 72.00", "tot": "USD 144.00"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_A-0005-00005498": {"titulo": "A-0005-00005498", "subtitulo": "LAGUNA PATAGONICA SAS · OC 11009", "noc": "11009", "econ": [{"l": "Costo USD", "v": "USD 289.40"}, {"l": "TC", "v": "$ 1.425"}, {"l": "Venta ARS", "v": "$ 634.454"}, {"l": "Fletes ARS", "v": "$ 56.648"}, {"l": "Total ARS", "v": "$ 691.102", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "2", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 289.40"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}};
+var D={"oc_10814": {"titulo": "OC 10814", "subtitulo": "REFMAR · 7 kits de reparacion K43FT2", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 682.33"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.485.374"}, {"l": "Fletes ARS", "v": "$ 53.846"}, {"l": "Total ARS", "v": "$ 1.539.220", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "7", "cod": "2010", "desc": "KIT DE REPARAC K43FT2 PARA 1343 AT4 Y AT5", "pu": "USD 97.48", "tot": "USD 682.33"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10826": {"titulo": "OC 10826", "subtitulo": "REFMAR · 20 bobinas jefferson 220v", "lbl_econ": "Resumen económico — saldo pendiente", "econ": [{"l": "Costo USD", "v": "USD 949.42"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.066.806"}, {"l": "Fletes ARS", "v": "$ 22.154"}, {"l": "Total ARS", "v": "$ 2.088.960", "hl": true}, {"l": "% Rendido", "v": "20%"}, {"l": "N° Factura/s", "v": "A-0005-00005504", "w": true}], "items": [{"cant": "20", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 1,186.77"}], "historial": [{"fac": "A-0005-00005504", "fecha": "06/05/2026", "cli": "MARISEL A MARTINEZ SRL", "tipo": "Facturado", "total": "$ 544.394", "pct": "20%"}], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10842": {"titulo": "OC 10842", "subtitulo": "REFMAR · 1 mp55a, 1 kp15a", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 1,168.49"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 2.543.715"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 2.571.407", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "1", "cod": "3058", "desc": "PRESOSTATO DIFERENCIAL MP55A", "pu": "USD 504.73", "tot": "USD 504.73"}, {"cant": "1", "cod": "3027", "desc": "PRESOSTATO, KP15A - 060-129466", "pu": "USD 663.76", "tot": "USD 663.76"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10988": {"titulo": "OC 10988", "subtitulo": "REFMAR · 10 un bobina jefferson mh18c40611", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 625.52"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.361.705"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.420.166", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "10", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 62.55", "tot": "USD 625.52"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_10989": {"titulo": "OC 10989", "subtitulo": "ALIPPI MARIO · 4 un kit K0544, 4 un K054M2CS, 6 un K054C/D reparacion", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 468.91"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.020.782"}, {"l": "Fletes ARS", "v": "$ 58.462"}, {"l": "Total ARS", "v": "$ 1.079.243", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "4", "cod": "10083", "desc": "KIT DE REPARAC K0544 PARA 2054 2.1/2\" TAPA SIMPLE Y MULTIPLE SIN PILOTOS NI ACC", "pu": "USD 43.18", "tot": "USD 172.73"}, {"cant": "4", "cod": "2018", "desc": "K054M2CS KIT DE REPARACION", "pu": "USD 60.49", "tot": "USD 241.95"}, {"cant": "6", "cod": "387627424", "desc": "K054C/D KIT DE REPARACION", "pu": "USD 9.04", "tot": "USD 54.23"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11010": {"titulo": "OC 11010", "subtitulo": "REFMAR · 3 un juego de sello zm", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 434.10"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 945.002"}, {"l": "Fletes ARS", "v": "$ 30.769"}, {"l": "Total ARS", "v": "$ 975.772", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "3", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 434.10"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11012": {"titulo": "OC 11012", "subtitulo": "RAICES PATAGONICAS SRL · 1 valv. pasaje 90° 1/2, 1 valv. pasaje 90° 2, 1 valv. gatillo 1/2", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 278.88"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 607.100"}, {"l": "Fletes ARS", "v": "$ 67.692"}, {"l": "Total ARS", "v": "$ 674.793", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "1", "cod": "4002", "desc": "VALVULA DE PASAJE EN ANGULO 90º 1/2\"", "pu": "USD 70.40", "tot": "USD 70.40"}, {"cant": "1", "cod": "4007", "desc": "VALVULA DE PASAJE EN ANGULO 90º 2\"", "pu": "USD 141.60", "tot": "USD 141.60"}, {"cant": "1", "cod": "25047", "desc": "VALVULA GATILLO 1/2\"", "pu": "USD 66.88", "tot": "USD 66.88"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11022": {"titulo": "OC 11022", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina valvula solen. Danfoss 220V", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 225.02"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 489.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 550.946", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "5", "cod": "22147", "desc": "BOBINA DE VALVULA SOLENOIDE DANFOSS 220 V - 50 HZ", "pu": "USD 45.00", "tot": "USD 225.02"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11023": {"titulo": "OC 11023", "subtitulo": "HACIENDA MARTINEZ S.R.L. · 5 un bobina jefferson mh18c40611", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 306.13"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 666.417"}, {"l": "Fletes ARS", "v": "$ 66.815"}, {"l": "Total ARS", "v": "$ 733.233", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "5", "cod": "23355", "desc": "BOBINA JEFFERSON MH18C406I1", "pu": "USD 61.23", "tot": "USD 306.13"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "oc_11024": {"titulo": "OC 11024", "subtitulo": "REFMAR · 6 un ventilador segun ppto", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 72.51"}, {"l": "TC (al dia de hoy)", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 157.846"}, {"l": "Fletes ARS", "v": "$ 61.100"}, {"l": "Total ARS", "v": "$ 218.946", "hl": true}, {"l": "% Rendido", "v": "0%"}], "items": [{"cant": "6", "cod": "23865", "desc": "VENTILADOR SEGUN PPTO", "pu": "USD 12.08", "tot": "USD 72.51"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales (Total OC)"}, "ven_10993_Obra": {"titulo": "Corresponde a material de obra", "subtitulo": "RAUL MARTINEZ S.R.L. · OC 10993", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 942.03"}, {"l": "TC", "v": "$ 1.420"}, {"l": "Venta ARS", "v": "$ 2.057.971"}, {"l": "Fletes ARS", "v": "$ 0"}, {"l": "Total ARS", "v": "$ 2.057.971", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "1", "cod": "17923", "desc": "LONA SEGUN PRESUPUESTO", "pu": "USD 942.03", "tot": "USD 942.03"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_A-0005-00005504": {"titulo": "A-0005-00005504", "subtitulo": "MARISEL A MARTINEZ SRL · OC 10826", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 237.35"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 516.702"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 544.394", "hl": true}, {"l": "Esta rendición representa", "v": "20% de la OC"}], "items": [{"cant": "4", "cod": "22801", "desc": "BOBINA JEFFERSON 220V - 11W", "pu": "USD 59.34", "tot": "USD 237.35"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_10806_Efectivo": {"titulo": "Cobro en efectivo", "subtitulo": "FRANCO CASTRO · OC 10806", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 523.20"}, {"l": "TC", "v": "$ 1.415"}, {"l": "Venta ARS", "v": "$ 1.138.966"}, {"l": "Fletes ARS", "v": "$ 27.692"}, {"l": "Total ARS", "v": "$ 1.166.658", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "4", "cod": "4000", "desc": "ROBINETE DE 5MM (CON JUEGO DE UNIONES)", "pu": "USD 73.60", "tot": "USD 294.40"}, {"cant": "1", "cod": "4047", "desc": "VALVULA DE EXPANSION EN ANGULO 3/4\"", "pu": "USD 84.80", "tot": "USD 84.80"}, {"cant": "2", "cod": "4003", "desc": "VALVULA DE PASAJE EN ANGULO 90º 3/4\"", "pu": "USD 72.00", "tot": "USD 144.00"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}, "ven_A-0005-00005498": {"titulo": "A-0005-00005498", "subtitulo": "LAGUNA PATAGONICA SAS · OC 11009", "lbl_econ": "Resumen económico", "econ": [{"l": "Costo USD", "v": "USD 289.40"}, {"l": "TC", "v": "$ 1.425"}, {"l": "Venta ARS", "v": "$ 634.454"}, {"l": "Fletes ARS", "v": "$ 56.648"}, {"l": "Total ARS", "v": "$ 691.102", "hl": true}, {"l": "Esta rendición representa", "v": "100% de la OC"}], "items": [{"cant": "2", "cod": "4273", "desc": "JUEGO DE SELLO ZM", "pu": "USD 144.70", "tot": "USD 289.40"}], "historial": [], "comentarios": "", "lbl_mat": "Costo de materiales"}};
 function abrir(id){
   var d=D[id]; if(!d) return;
   document.getElementById('sh-ttl').textContent=d.titulo;
   document.getElementById('sh-sub').textContent=d.subtitulo||'';
   var h='';
-  if(d.comentarios){
-    h+='<div class="sh-com"><div class="sh-com-lbl">Comentario</div>'+d.comentarios+'</div>';
-  }
-  h+='<div class="sh-lbl">Resumen económico</div><div class="egrid">';
+  if(d.comentarios) h+='<div class="sh-com"><div class="sh-com-lbl">Comentario</div>'+d.comentarios+'</div>';
+  var le=d.lbl_econ||'Resumen económico';
+  h+='<div class="sh-lbl">'+le+'</div><div class="egrid">';
   d.econ.forEach(function(e){
     var c='ecell'+(e.hl?' hl':'')+(e.w?' wide':'');
     h+='<div class="'+c+'"><div class="ecell-l">'+e.l+'</div><div class="ecell-v">'+e.v+'</div></div>';
   });
   h+='</div>';
-  if(d.historial&&d.historial.length>0){
-    h+='<div class="sh-lbl">Historial de facturación</div>';
-    h+='<div class="card"><table class="htable">';
-    h+='<thead><tr><th>Fecha</th><th>Comprobante</th><th>Cliente</th><th class="r">Total ARS</th><th class="r">% OC</th></tr></thead><tbody>';
-    d.historial.forEach(function(h2){
-      h+='<tr>';
-      h+='<td class="dt">'+h2.fecha+'</td>';
-      h+='<td class="tit">'+h2.titulo+'</td>';
-      h+='<td class="cli">'+h2.cli+'</td>';
-      h+='<td class="r">'+h2.total+'</td>';
-      h+='<td class="r">'+h2.pct+'</td>';
-      h+='</tr>';
-    });
-    h+='</tbody></table></div>';
-  }
-  var lbl=d.lbl_mat||'Costo de materiales';
-  h+='<div class="sh-lbl">'+lbl+'</div>';
+  var lm=d.lbl_mat||'Costo de materiales';
+  h+='<div class="sh-lbl">'+lm+'</div>';
   var items=d.items||[];
   if(!items.length){h+='<div class="nomat">Sin materiales registrados</div>';}
   else{items.forEach(function(m){
@@ -178,6 +155,14 @@ function abrir(id){
     h+='<div class="mcard-row"><span class="mcard-lbl">Costo total USD</span><span class="mcard-val">'+m.tot+'</span></div>';
     h+='</div>';
   });}
+  if(d.historial&&d.historial.length>0){
+    h+='<div class="sh-lbl">Historial de facturación</div>';
+    h+='<div class="card"><table class="htable"><thead><tr><th>Fecha</th><th>Comprobante</th><th>Cliente</th><th class="r">Total ARS</th><th class="r">% OC</th></tr></thead><tbody>';
+    d.historial.forEach(function(h2){
+      h+='<tr><td class="dt">'+h2.fecha+'</td><td class="tit">'+h2.fac+'</td><td class="cli">'+h2.cli+'</td><td class="r">'+h2.total+'</td><td class="r">'+h2.pct+'</td></tr>';
+    });
+    h+='</tbody></table></div>';
+  }
   document.getElementById('sh-body').innerHTML=h;
   document.getElementById('ov').classList.add('on');
   document.getElementById('sh').classList.add('on');
