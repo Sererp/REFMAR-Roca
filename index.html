@@ -189,44 +189,36 @@ sh.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-sy>70)
 var actualId=null;
 function copiarDetalle(btn){
   var d=D[actualId]; if(!d) return;
-  var td1='padding:6px 8px;border-bottom:1px solid #f2f2f7;color:#6e6e73;';
-  var td2='padding:6px 8px;border-bottom:1px solid #f2f2f7;text-align:right;font-family:Consolas,monospace;font-weight:bold;';
-  var lbl='font-size:11px;font-weight:bold;color:#6e6e73;text-transform:uppercase;border-bottom:1px solid #e5e5ea;padding-bottom:6px;margin:18px 0 8px;';
-  var h=`<div style='font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#1d1d1f;max-width:680px'>`;
-  h+=`<div style='font-size:18px;font-weight:bold;margin-bottom:2px'>${d.titulo}</div>`;
-  h+=`<div style='font-size:12px;color:#6e6e73;margin-bottom:12px'>${d.subtitulo||''}</div>`;
-  if(d.comentarios) h+=`<div style='background:#fff6e0;color:#946000;padding:8px 10px;margin-bottom:12px;font-size:12px'><b>Comentario:</b> ${d.comentarios}</div>`;
-  h+=`<div style='${lbl}'>${d.lbl_econ}</div>`;
-  h+=`<table cellpadding='0' cellspacing='0' style='border-collapse:collapse;width:100%'>`;
+  var lin='margin:0 0 3px 0;';
+  var bloque='margin:0 0 18px 0;';
+  var sec='margin:20px 0 8px 0;';
+  var h='<div>';
+  h+='<p style="'+lin+'">'+d.titulo+'</p>';
+  h+='<p style="'+bloque+'">'+(d.subtitulo||'')+'</p>';
+  if(d.comentarios) h+='<p style="'+bloque+'">Comentario: '+d.comentarios+'</p>';
+  h+='<p style="'+sec+'">'+d.lbl_econ+'</p>';
   d.econ.forEach(function(e){
-    var col=e.hl?'color:#0064c8;':'';
-    h+=`<tr><td style='${td1}'>${e.l}</td><td style='${td2}${col}'>${e.v}</td></tr>`;
+    h+='<p style="'+lin+'">'+e.l+': '+e.v+'</p>';
   });
-  h+=`</table>`;
-  h+=`<div style='${lbl}'>${d.lbl_mat}</div>`;
+  h+='<p style="'+sec+'">'+d.lbl_mat+'</p>';
   var items=d.items||[];
-  if(!items.length){ h+=`<div style='color:#6e6e73'>Sin materiales registrados</div>`; }
+  if(!items.length){ h+='<p style="'+bloque+'">Sin materiales registrados</p>'; }
   items.forEach(function(m){
-    h+=`<div style='border:1px solid #e5e5ea;border-radius:8px;padding:10px 12px;margin-bottom:10px'>`;
-    h+=`<div style='font-size:14px;font-weight:bold;margin-bottom:6px'>${m.desc}</div>`;
-    h+=`<div style='font-size:12px;color:#6e6e73;margin-bottom:6px'>`+(m.cod?`Código QS – ${m.cod}`:'')+(m.noc?` &nbsp;·&nbsp; OC ${m.noc}`:'')+`</div>`;
-    h+=`<table cellpadding='0' cellspacing='0' style='border-collapse:collapse;width:100%'>`;
-    h+=`<tr><td style='${td1}'>Cantidad</td><td style='${td2}'>${m.cant}</td></tr>`;
-    h+=`<tr><td style='${td1}'>Costo unitario USD</td><td style='${td2}'>${m.pu}</td></tr>`;
-    h+=`<tr><td style='${td1}'>Costo total USD</td><td style='${td2}'>${m.tot}</td></tr>`;
-    h+=`</table></div>`;
+    h+='<p style="'+bloque+'">';
+    h+=m.desc+'<br>';
+    h+=(m.cod?'Código QS: '+m.cod:'')+(m.noc?' · OC '+m.noc:'')+'<br>';
+    h+='Cantidad: '+m.cant+'<br>';
+    h+='Costo unitario: '+m.pu+'<br>';
+    h+='Costo total: '+m.tot;
+    h+='</p>';
   });
   if(d.historial&&d.historial.length>0){
-    var th='text-align:left;color:#6e6e73;border-bottom:1px solid #e5e5ea;padding:6px 8px;';
-    h+=`<div style='${lbl}'>Historial de facturación</div>`;
-    h+=`<table cellpadding='0' cellspacing='0' style='border-collapse:collapse;width:100%;font-size:12px'><tr><th style='${th}'>Fecha</th><th style='${th}'>Comprobante</th><th style='${th}'>Cliente</th><th style='${th}text-align:right'>Total ARS</th><th style='${th}text-align:right'>% OC</th></tr>`;
+    h+='<p style="'+sec+'">Historial de facturación</p>';
     d.historial.forEach(function(x){
-      var tdh='padding:6px 8px;border-bottom:1px solid #f2f2f7;';
-      h+=`<tr><td style='${tdh}'>${x.fecha}</td><td style='${tdh}'>${x.fac}</td><td style='${tdh}'>${x.cli}</td><td style='${tdh}text-align:right'>${x.total}</td><td style='${tdh}text-align:right'>${x.pct}</td></tr>`;
+      h+='<p style="'+lin+'">'+x.fecha+' · '+x.fac+' · '+x.cli+' · '+x.total+' · '+x.pct+' de la OC</p>';
     });
-    h+=`</table>`;
   }
-  h+=`</div>`;
+  h+='</div>';
   var tmp=document.createElement('div');
   tmp.style.cssText='position:fixed;left:-10000px;top:0;background:#fff';
   tmp.innerHTML=h;
