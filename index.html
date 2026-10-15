@@ -189,36 +189,37 @@ sh.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-sy>70)
 var actualId=null;
 function copiarDetalle(btn){
   var d=D[actualId]; if(!d) return;
-  var lin='margin:0 0 3px 0;';
-  var bloque='margin:0 0 18px 0;';
-  var sec='margin:20px 0 8px 0;';
-  var h='<div>';
-  h+='<p style="'+lin+'">'+d.titulo+'</p>';
-  h+='<p style="'+bloque+'">'+(d.subtitulo||'')+'</p>';
-  if(d.comentarios) h+='<p style="'+bloque+'">Comentario: '+d.comentarios+'</p>';
-  h+='<p style="'+sec+'">'+d.lbl_econ+'</p>';
+  var L=[];
+  var B=function(){ L.push(''); };
+  L.push(d.titulo);
+  L.push(d.subtitulo||'');
+  B();
+  if(d.comentarios){ L.push('Comentario: '+d.comentarios); B(); }
+  L.push(d.lbl_econ);
   d.econ.forEach(function(e){
-    h+='<p style="'+lin+'">'+e.l+': '+e.v+'</p>';
+    if(e.l.indexOf('representa')!==-1 || e.l.indexOf('% Rendido')!==-1) B();
+    L.push(e.l+': '+e.v);
   });
-  h+='<p style="'+sec+'">'+d.lbl_mat+'</p>';
+  B();
+  L.push(d.lbl_mat);
   var items=d.items||[];
-  if(!items.length){ h+='<p style="'+bloque+'">Sin materiales registrados</p>'; }
-  items.forEach(function(m){
-    h+='<p style="'+bloque+'">';
-    h+=m.desc+'<br>';
-    h+=(m.cod?'Código QS: '+m.cod:'')+(m.noc?' · OC '+m.noc:'')+'<br>';
-    h+='Cantidad: '+m.cant+'<br>';
-    h+='Costo unitario: '+m.pu+'<br>';
-    h+='Costo total: '+m.tot;
-    h+='</p>';
+  if(!items.length){ L.push('Sin materiales registrados'); }
+  items.forEach(function(m,i){
+    if(i>0) B();
+    L.push(m.desc);
+    L.push((m.cod?'Código QS: '+m.cod:'')+(m.noc?' · OC '+m.noc:''));
+    L.push('Cantidad: '+m.cant);
+    L.push('Costo unitario: '+m.pu);
+    L.push('Costo total: '+m.tot);
   });
   if(d.historial&&d.historial.length>0){
-    h+='<p style="'+sec+'">Historial de facturación</p>';
+    B();
+    L.push('Historial de facturación');
     d.historial.forEach(function(x){
-      h+='<p style="'+lin+'">'+x.fecha+' · '+x.fac+' · '+x.cli+' · '+x.total+' · '+x.pct+' de la OC</p>';
+      L.push(x.fecha+' · '+x.fac+' · '+x.cli+' · '+x.total+' · '+x.pct+' de la OC');
     });
   }
-  h+='</div>';
+  var h='<div>'+L.join('<br>')+'</div>';
   var tmp=document.createElement('div');
   tmp.style.cssText='position:fixed;left:-10000px;top:0;background:#fff';
   tmp.innerHTML=h;
